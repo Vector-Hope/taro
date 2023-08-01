@@ -4,41 +4,17 @@ import { View, Button, Text, Input } from '@tarojs/components'
 import './index.scss'
 
 /**
- * 设备-电话
+ * 开放接口-账户信息
  * @returns 
  */
 
 export default class Index extends React.Component {
     state = {
         api: {
-            id: 'makePhoneCall',
-            func: (inputValue) => {
-                Taro.makePhoneCall({
-                    phoneNumber: inputValue,
-                    success: (res) => {
-                        console.log('success-----', res);
-                    }
-                })
-            },
+            id: 'getAccountInfoSync',
+            func: null,
         }, 
-        inputValue: '',
-        disabled: true,
     }
-    changeNumber = (e) => {
-        let inputValue = e.detail.value + '';
-        console.log(this);
-        if (inputValue.length > 0) {
-          this.setState({
-            inputValue,
-            disabled: false
-          })
-        } else {
-          this.setState({
-            inputValue,
-            disabled: true
-          })
-        }
-      }
     render () {
         const { api, inputValue, disabled } = this.state;
         return (

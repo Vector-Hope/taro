@@ -4,7 +4,7 @@ import { View, Text } from '@tarojs/components'
 import './index.scss'
 
 /**
- * 设备-电池
+ * 媒体-富文本
  * @returns 
  */
 
@@ -12,33 +12,17 @@ export default class Index extends React.Component {
     state = {
         list: [
             {
-                id: 'getBatteryInfo',
-                func: () => {
-                    Taro.getBatteryInfo({
-                        success: (res) => {
-                            console.log('success-----', res);
-                            this.setState({
-                                batteryInfo: res,
-                            })
-                        }
-                    })
-                },
-            }, 
-            {
-                id: 'getBatteryInfoSync',
+                id: 'EditorContext',
                 func: null,
             }, 
         ], 
-        batteryInfo: {},
     }
     render () {
-        const { list, batteryInfo } = this.state;
+        const { list } = this.state;
         return (
             <View className='api-page'>
-                <View>是否正在充电：{batteryInfo.isCharging ? '是' : '否'}</View>
-                <View>设备电量：{batteryInfo.level}%</View>
                 {
-                    this.state.list.map((item) => {
+                    list.map((item) => {
                         return (
                             <View
                                 className='api-page-btn'

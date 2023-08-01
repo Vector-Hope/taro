@@ -4,7 +4,7 @@ import { View, Text } from '@tarojs/components'
 import './index.scss'
 
 /**
- * 设备-电池
+ * 媒体-音频
  * @returns 
  */
 
@@ -12,33 +12,73 @@ export default class Index extends React.Component {
     state = {
         list: [
             {
-                id: 'getBatteryInfo',
-                func: () => {
-                    Taro.getBatteryInfo({
-                        success: (res) => {
-                            console.log('success-----', res);
-                            this.setState({
-                                batteryInfo: res,
-                            })
-                        }
-                    })
-                },
-            }, 
-            {
-                id: 'getBatteryInfoSync',
+                id: 'stopVoice',
                 func: null,
-            }, 
+            },
+            {
+                id: 'setInnerAudioOption',
+                func: null,
+            },
+            {
+                id: 'playVoice',
+                func: null,
+            },
+            {
+                id: 'pauseVoice',
+                func: null,
+            },
+            {
+                id: 'getAvailableAudioSources',
+                func: null,
+            },
+            {
+                id: 'createWebAudioContext',
+                func: null,
+            },
+            {
+                id: 'createMediaAudioPlayer',
+                func: null,
+            },
+            {
+                id: 'createInnerAudioContext',
+                func: null,
+            },
+            {
+                id: 'createAudioContext',
+                func: null,
+            },
+            {
+                id: 'AudioBuffer',
+                func: null,
+            },
+            {
+                id: 'AudioContext',
+                func: null,
+            },
+            {
+                id: 'InnerAudioContext',
+                func: null,
+            },
+            {
+                id: 'MediaAudioPlayer',
+                func: null,
+            },
+            {
+                id: 'WebAudioContext',
+                func: null,
+            },
+            {
+                id: 'WebAudioContextNode',
+                func: null,
+            },
         ], 
-        batteryInfo: {},
     }
     render () {
-        const { list, batteryInfo } = this.state;
+        const { list } = this.state;
         return (
             <View className='api-page'>
-                <View>是否正在充电：{batteryInfo.isCharging ? '是' : '否'}</View>
-                <View>设备电量：{batteryInfo.level}%</View>
                 {
-                    this.state.list.map((item) => {
+                    list.map((item) => {
                         return (
                             <View
                                 className='api-page-btn'

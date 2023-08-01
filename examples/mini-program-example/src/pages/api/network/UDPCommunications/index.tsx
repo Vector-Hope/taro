@@ -4,7 +4,7 @@ import { View, Text } from '@tarojs/components'
 import './index.scss'
 
 /**
- * 界面-窗口
+ * 网络-UDP 通信
  * @returns 
  */
 
@@ -12,21 +12,13 @@ export default class Index extends React.Component {
     state = {
         list: [
             {
-                id: 'setWindowSize',
+                id: 'createUDPSocket',
                 func: null,
             }, 
             {
-                id: 'onWindowResize',
+                id: 'UDPSocket',
                 func: null,
             }, 
-            {
-                id: 'offWindowResize',
-                func: null,
-            }, 
-            {
-                id: 'checkIsPictureInPictureActive',
-                func: null,
-            },
         ], 
     }
     render () {

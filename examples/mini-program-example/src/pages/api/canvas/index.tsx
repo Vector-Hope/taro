@@ -33,9 +33,9 @@ export default class Index extends React.Component {
                         context.stroke()
                         context.draw()
                         console.log('createCanvasContext ', context)
-                      })
+                    })
                 },
-            }, 
+            },
             {
                 id: 'canvasToTempFilePath',
                 func: () => {
@@ -68,7 +68,7 @@ export default class Index extends React.Component {
                                 fileType: 'png',
                                 canvasId: 'myCanvas',
                                 success: function (res) {
-                                  console.log('canvasToTempFilePath success', res)
+                                    console.log('canvasToTempFilePath success', res)
                                 },
                                 fail: function (res) {
                                     console.log('canvasToTempFilePath fail', res)
@@ -76,11 +76,11 @@ export default class Index extends React.Component {
                                 complete: function (res) {
                                     console.log('canvasToTempFilePath complete', res)
                                 },
-                              })
+                            })
                         })
-                      })
+                    })
                 },
-            }, 
+            },
             {
                 id: 'CanvasContext',
                 func: () => {
@@ -122,43 +122,51 @@ export default class Index extends React.Component {
                     ctx.stroke()
                     ctx.draw()
                 },
-            }, 
+            },
             {
-                id: 'base64ToArrayBuffer',
+                id: 'createOffscreenCanvas',
                 func: null,
-            }, 
+            },
             {
-                id: 'System',
-                func: () => {
-                    Taro.navigateTo({
-                        url: '/pages/api/basics/system/index'
-                    });
-                },
-            }, 
-            {
-                id: 'Update',
+                id: 'canvasPutImageData',
                 func: null,
-            }, 
+            },
             {
-                id: 'MiniProgram',
+                id: 'canvasGetImageData',
                 func: null,
-            }, 
+            },
             {
-                id: 'Debug',
+                id: 'Canvas',
                 func: null,
-            }, 
+            },
             {
-                id: 'Performance',
+                id: 'CanvasGradient',
                 func: null,
-            }, 
+            },
             {
-                id: 'Encryption',
+                id: 'Color',
                 func: null,
-            }, 
+            },
             {
-                id: 'perload',
+                id: 'Image',
                 func: null,
-            }, 
+            },
+            {
+                id: 'ImageData',
+                func: null,
+            },
+            {
+                id: 'OffscreenCanvas',
+                func: null,
+            },
+            {
+                id: 'Path2D',
+                func: null,
+            },
+            {
+                id: 'RenderingContext',
+                func: null,
+            },
         ], 
     }
     render () {

@@ -4,7 +4,7 @@ import { View, Text } from '@tarojs/components'
 import './index.scss'
 
 /**
- * 界面-窗口
+ * 设备-日历
  * @returns 
  */
 
@@ -12,21 +12,13 @@ export default class Index extends React.Component {
     state = {
         list: [
             {
-                id: 'setWindowSize',
+                id: 'addPhoneRepeatCalendar',
                 func: null,
             }, 
             {
-                id: 'onWindowResize',
+                id: 'addPhoneCalendar',
                 func: null,
             }, 
-            {
-                id: 'offWindowResize',
-                func: null,
-            }, 
-            {
-                id: 'checkIsPictureInPictureActive',
-                func: null,
-            },
         ], 
     }
     render () {
