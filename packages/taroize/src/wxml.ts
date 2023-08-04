@@ -1,11 +1,11 @@
 /* eslint-disable camelcase */
+import { parse as parseFile } from '@babel/parser'
 import traverse, { NodePath, Visitor } from '@babel/traverse'
 import * as t from '@babel/types'
 import {
   printLog,
   processTypeEnum
 } from '@tarojs/helper'
-import { parse as parseFile } from 'babylon'
 import { parse } from 'himalaya-wxml'
 import { camelCase, cloneDeep } from 'lodash'
 
@@ -164,7 +164,7 @@ export const createWxmlVistor = (
       if (nodeName === WX_KEY) {
         path.replaceWith(t.jSXIdentifier('key'))
       }
-      if (nodeName === WX_SHOW){
+      if (nodeName === WX_SHOW) {
         path.replaceWith(t.jSXIdentifier(WX_IF)) // wx:show转换后不支持，不频繁切换的话wx:if可替代
         // eslint-disable-next-line no-console
         console.log(`属性  ${nodeName}不能编译,会被替换为wx:if`)
@@ -229,9 +229,9 @@ export const createWxmlVistor = (
             )
             path.remove()
           }
-          /*} else {
+          /* } else {
             throw codeFrameError(slotValue, 'slot 的值必须是一个字符串')
-          }*/
+          } */
         }
         const tagName = jsxName.node.name
         if (tagName === 'Slot') {
@@ -435,8 +435,15 @@ function getWXS (attrs: t.JSXAttribute[], path: NodePath<t.JSXElement>, imports:
     const ast = parseCode(script.value)
     traverse(ast, {
       CallExpression (path) {
+        // wxs标签中getRegExp转换为new RegExp
         if (t.isIdentifier(path.node.callee, { name: 'getRegExp' })) {
-          console.warn(codeFrameError(path.node, '请使用 JavaScript 标准正则表达式把这个 getRegExp 函数重构。'))
+          const arg = path.node.arguments[0]
+          if (t.isStringLiteral(arg)) {
+            const regex = arg.extra?.raw as string
+            const regexWithoutQuotes = regex.replace(/^'(.*)'$/, '$1')
+            const newExpr = t.newExpression(t.identifier('RegExp'), [t.stringLiteral(regexWithoutQuotes), t.stringLiteral('g')])
+            path.replaceWith(newExpr)
+          }
         }
       }
     })
@@ -778,6 +785,7 @@ function parseText (node: Text, tagName?: string) {
   return t.jSXExpressionContainer(buildTemplate(content))
 }
 
+// 匹配{{content}}
 const handlebarsRE = /\{\{((?:.|\n)+?)\}\}/g
 
 function singleQuote (s: string) {
