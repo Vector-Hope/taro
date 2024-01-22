@@ -55,7 +55,6 @@
     "@tarojs/plugin-platform-h5": "3.6.15",
     "@tarojs/plugin-platform-mpharmony": "workspace:*",
     "@tarojs/plugin-platform-mpandroid": "workspace:*",
-    "@tarojs/components-mpharmony": "workspace:*",
     "@tarojs/runtime": "3.6.15",
     "@tarojs/shared": "3.6.15",
     "@tarojs/taro": "3.6.15",

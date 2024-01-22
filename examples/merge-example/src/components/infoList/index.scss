@@ -1,0 +1,26 @@
+.info-wrapper {
+  background-color: #fff;
+  font-size: 32px;
+}
+
+.info-cell {
+  padding: 20px 30px;
+  display: flex;
+  align-items: center;
+}
+
+.info-label {
+  width: 180px;
+  margin-right: 20px;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+.value-wrapper {
+  flex: 1;
+}
+
+.info-value {
+  word-break: break-all;
+  word-wrap: break-word;
+}
